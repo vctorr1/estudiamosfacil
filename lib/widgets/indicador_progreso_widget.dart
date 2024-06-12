@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:estudiamosfacil/views/quiz_screen.dart';
+import 'package:estudiamosfacil/views/preguntas_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyProgressIndicator extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:estudiamosfacil/models/layout_questions_model.dart';
-import 'package:estudiamosfacil/models/navigation_questions_model.dart';
+import 'package:estudiamosfacil/models/tema1_model.dart';
 import 'package:estudiamosfacil/models/widget_questions_model.dart';
 import 'package:estudiamosfacil/models/state_questions_model.dart';
 import 'package:flutter/cupertino.dart';

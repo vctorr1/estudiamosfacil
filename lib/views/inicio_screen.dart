@@ -1,5 +1,5 @@
-import 'package:estudiamosfacil/models/flutter_topics_model.dart';
-import 'package:estudiamosfacil/views/flashcard_screen.dart';
+import 'package:estudiamosfacil/models/temas_model.dart';
+import 'package:estudiamosfacil/views/cartas_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:estudiamosfacil/widgets/results_card.dart';
+import 'package:estudiamosfacil/widgets/carta_resultados_widget.dart';
 import 'package:flutter/material.dart';
 
 class ResultsScreen extends StatelessWidget {

@@ -1,4 +1,4 @@
-import 'package:estudiamosfacil/widgets/dotted_lines.dart';
+import 'package:estudiamosfacil/widgets/l%C3%ADnea_puntos_widget.dart';
 import 'package:flutter/material.dart';
 
 class ResultsCard extends StatelessWidget {

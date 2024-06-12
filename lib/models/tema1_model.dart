@@ -3,14 +3,14 @@ class NavigateQuestion {
   final String text;
   final List<NavigationsOption> options;
   bool isLocked;
-  NavigationsOption? selectedWiidgetOption;
+  NavigationsOption? selectedWidgetOption;
   NavigationsOption? correctAnswer;
 
   NavigateQuestion({
     required this.text,
     required this.options,
     this.isLocked = false,
-    this.selectedWiidgetOption,
+    this.selectedWidgetOption,
     required this.id,
     required this.correctAnswer,
   });
@@ -24,7 +24,7 @@ class NavigateQuestion {
               NavigationsOption(text: option.text, isCorrect: option.isCorrect))
           .toList(),
       isLocked: isLocked,
-      selectedWiidgetOption: selectedWiidgetOption,
+      selectedWidgetOption: selectedWidgetOption,
       correctAnswer: correctAnswer,
     );
   }

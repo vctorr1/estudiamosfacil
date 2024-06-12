@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:estudiamosfacil/views/results_screen.dart';
+import 'package:estudiamosfacil/views/resultados_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

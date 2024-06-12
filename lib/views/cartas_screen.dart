@@ -1,7 +1,7 @@
 import 'package:appinio_swiper/appinio_swiper.dart';
-import 'package:estudiamosfacil/views/quiz_screen.dart';
-import 'package:estudiamosfacil/widgets/flash_card_widget.dart';
-import 'package:estudiamosfacil/widgets/linear_progress_indicator_widget.dart';
+import 'package:estudiamosfacil/views/preguntas_screen.dart';
+import 'package:estudiamosfacil/widgets/carta_widget.dart';
+import 'package:estudiamosfacil/widgets/indicador_progreso_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
@@ -77,8 +77,7 @@ class _NewCardState extends State<NewCard> {
                   swipeOptions: const SwipeOptions.all(),
                   allowUnlimitedUnSwipe: true,
                   controller: controller,
-                  cardCount: randomQuestions
-                      .length, // Aquí estaba el error, se corrigió a cardsCount
+                  cardCount: randomQuestions.length,
                   cardBuilder: (BuildContext context, int index) {
                     var cardIndex = randomQuestions[index];
                     return FlipCardsWidget(
