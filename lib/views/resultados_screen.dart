@@ -2,24 +2,28 @@ import 'package:estudiamosfacil/widgets/carta_resultados_widget.dart';
 import 'package:flutter/material.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen(
-      {super.key,
-      required this.score,
-      required this.totalQuestions,
-      required this.whichTopic});
-  final int score;
-  final int totalQuestions;
-  final String whichTopic;
+  const ResultsScreen({
+    super.key,
+    required this.score,
+    required this.totalQuestions,
+    required this.whichTopic,
+  });
+
+  final int score; // Puntaje obtenido
+  final int totalQuestions; // Número total de preguntas
+  final String whichTopic; // Tema del test
 
   @override
   Widget build(BuildContext context) {
-    const Color bgColor3 = Color(0xFF5170FD);
-    print(score);
-    print(totalQuestions);
-    final double percentageScore = (score / totalQuestions) * 100;
-    final int roundedPercentageScore = percentageScore.round();
-    const Color cardColor = Color(0xFF4993FA);
+    const Color bgColor3 = Color(0xFF5170FD); // Color de fondo
+    final double percentageScore =
+        (score / totalQuestions) * 100; // Cálculo del puntaje en porcentaje
+    final int roundedPercentageScore =
+        percentageScore.round(); // Puntaje redondeado
+    const Color cardColor = Color(0xFF4993FA); // Color de las tarjetas
+
     return WillPopScope(
+      // Evita que el usuario pueda volver atrás con el botón de retroceso
       onWillPop: () {
         Navigator.popUntil(context, (route) => route.isFirst);
         return Future.value(false);
@@ -32,6 +36,7 @@ class ResultsScreen extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
+                // Navega de regreso a la pantalla anterior
                 Navigator.popUntil(context, (route) => route.isFirst);
               },
               icon: const Icon(
@@ -46,6 +51,7 @@ class ResultsScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              // Título de la pantalla de resultados
               RichText(
                 text: TextSpan(
                   children: [
@@ -72,6 +78,7 @@ class ResultsScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              // Tema del test
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -83,12 +90,15 @@ class ResultsScreen extends StatelessWidget {
                       ),
                 ),
               ),
+              // Tarjeta de resultados que muestra el puntaje
               ResultsCard(
-                  roundedPercentageScore: roundedPercentageScore,
-                  bgColor3: bgColor3),
+                roundedPercentageScore: roundedPercentageScore,
+                bgColor3: bgColor3,
+              ),
               const SizedBox(
                 height: 25,
               ),
+              // Botón para hacer otro test
               ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(cardColor),
@@ -98,6 +108,7 @@ class ResultsScreen extends StatelessWidget {
                   elevation: MaterialStateProperty.all(4),
                 ),
                 onPressed: () {
+                  // Navega de regreso a la pantalla anterior
                   Navigator.popUntil(context, (route) => route.isFirst);
                 },
                 child: const Text(

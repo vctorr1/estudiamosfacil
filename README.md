@@ -1,16 +1,16 @@
-# estudiamosfacil
+# Estudiamosfacil
 
-A new Flutter project.
+Aplicación destinada al aprendizaje en la informática.
 
-## Getting Started
+## Datos del proyecto
 
-This project is a starting point for a Flutter application.
+Realizado con Dart y Flutter, usando los plugins: 
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- [Flip Card](https://pub.dev/packages/flip_card)
+- [Appinio Swiper](https://pub.dev/packages/appinio_swiper)
 
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+
+Desarrollado por Gunstar Studio S.L.

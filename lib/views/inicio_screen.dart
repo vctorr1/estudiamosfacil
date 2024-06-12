@@ -7,8 +7,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const Color bgColor = Color(0xFF4993FA);
-    const Color bgColor3 = Color(0xFF5170FD);
+    const Color bgColor = Color(0xFF4993FA); // Color de las tarjetas
+    const Color bgColor3 = Color(0xFF5170FD); // Color de fondo de la pantalla
+
     return Scaffold(
       backgroundColor: bgColor3,
       body: SafeArea(
@@ -17,6 +18,7 @@ class HomePage extends StatelessWidget {
           child: ListView(
             physics: const BouncingScrollPhysics(),
             children: [
+              // Contenedor para el logotipo
               Container(
                 decoration: BoxDecoration(
                   color: bgColor3,
@@ -38,6 +40,7 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              // Texto centrado
               Center(
                 child: RichText(
                   text: TextSpan(
@@ -58,20 +61,23 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
+              // GridView para mostrar las tarjetas de temas
               GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 10,
-                  childAspectRatio: 0.85,
+                  crossAxisCount: 2, // Número de columnas
+                  mainAxisSpacing: 10, // Espaciado entre filas
+                  crossAxisSpacing: 10, // Espaciado entre columnas
+                  childAspectRatio:
+                      0.85, // Relación de aspecto de los elementos
                 ),
                 shrinkWrap: true,
                 physics: const BouncingScrollPhysics(),
-                itemCount: flutterTopicsList.length,
+                itemCount: flutterTopicsList.length, // Número de temas
                 itemBuilder: (context, index) {
                   final topicsData = flutterTopicsList[index];
                   return GestureDetector(
                     onTap: () {
+                      // Navega a la pantalla de tarjetas cuando se toca una tarjeta
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -81,7 +87,7 @@ class HomePage extends StatelessWidget {
                           ),
                         ),
                       );
-                      print(topicsData.topicName);
+                      print(topicsData.topicName); // Imprime el nombre del tema
                     },
                     child: Card(
                       color: bgColor,

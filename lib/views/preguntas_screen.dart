@@ -5,9 +5,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class QuizScreen extends StatefulWidget {
-  final String topicType;
-  final List<dynamic> questionlenght;
-  final dynamic optionsList;
+  final String topicType; // Tipo de tema del cuestionario
+  final List<dynamic> questionlenght; // Lista de preguntas
+  final dynamic optionsList; // Lista de opciones para cada pregunta
+
   const QuizScreen({
     super.key,
     required this.questionlenght,
@@ -20,14 +21,20 @@ class QuizScreen extends StatefulWidget {
 }
 
 class _QuizScreenState extends State<QuizScreen> {
-  int questionTimerSeconds = 20;
-  Timer? _timer;
-  int _questionNumber = 1;
-  PageController _controller = PageController();
-  int score = 0;
-  bool isLocked = false;
-  List optionsLetters = ["A.", "B.", "C.", "D."];
+  int questionTimerSeconds = 20; // Duración del temporizador de la pregunta
+  Timer? _timer; // Temporizador
+  int _questionNumber = 1; // Número de la pregunta actual
+  PageController _controller = PageController(); // Controlador de la página
+  int score = 0; // Puntaje del cuestionario
+  bool isLocked = false; // Indicador de bloqueo de pregunta
+  List optionsLetters = [
+    "A.",
+    "B.",
+    "C.",
+    "D."
+  ]; // Letras para las opciones de respuesta
 
+  // Inicia el temporizador para las preguntas
   void startTimerOnQuestions() {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (mounted) {
@@ -43,10 +50,12 @@ class _QuizScreenState extends State<QuizScreen> {
     });
   }
 
+  // Detiene el temporizador
   void stopTime() {
     _timer?.cancel();
   }
 
+  // Navega a la siguiente pregunta o a la pantalla de resultados
   void navigateToNewScreen() {
     if (_questionNumber < widget.questionlenght.length) {
       _controller.nextPage(
@@ -107,6 +116,7 @@ class _QuizScreenState extends State<QuizScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // Encabezado del cuestionario
                 Row(
                   children: [
                     Text(
@@ -123,6 +133,7 @@ class _QuizScreenState extends State<QuizScreen> {
                 const SizedBox(
                   height: 10,
                 ),
+                // Temporizador de pregunta
                 Padding(
                   padding: const EdgeInsets.only(right: 14, bottom: 10),
                   child: Row(
@@ -152,6 +163,7 @@ class _QuizScreenState extends State<QuizScreen> {
                     ],
                   ),
                 ),
+                // Contenedor de la pregunta actual
                 Container(
                   padding: const EdgeInsets.only(top: 12, left: 10, right: 10),
                   width: MediaQuery.of(context).size.width * 0.90,
@@ -174,6 +186,7 @@ class _QuizScreenState extends State<QuizScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          // Número de la pregunta actual
                           Text(
                             "Pregunta $_questionNumber/${widget.questionlenght.length}",
                             style: TextStyle(
@@ -200,6 +213,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
                                 return Column(
                                   children: [
+                                    // Texto de la pregunta actual
                                     Text(
                                       myquestions.text,
                                       style: Theme.of(context)
@@ -222,10 +236,11 @@ class _QuizScreenState extends State<QuizScreen> {
                                               myquestions.options[index];
                                           final letters = optionsLetters[index];
 
+                                          // Cambia el color de fondo de la opción según la respuesta seleccionada y si está bloqueada
                                           if (myquestions.isLocked) {
                                             if (questionOption ==
                                                 myquestions
-                                                    .selectedWiidgetOption) {
+                                                    .selectedWidgetOption) {
                                               color = questionOption.isCorrect
                                                   ? Colors.green
                                                   : Colors.red;
@@ -242,13 +257,13 @@ class _QuizScreenState extends State<QuizScreen> {
                                                 setState(() {
                                                   myquestions.isLocked = true;
                                                   myquestions
-                                                          .selectedWiidgetOption =
+                                                          .selectedWidgetOption =
                                                       questionOption;
                                                 });
 
                                                 isLocked = myquestions.isLocked;
                                                 if (myquestions
-                                                    .selectedWiidgetOption
+                                                    .selectedWidgetOption
                                                     .isCorrect) {
                                                   score++;
                                                 }
@@ -281,6 +296,7 @@ class _QuizScreenState extends State<QuizScreen> {
                                                       ),
                                                     ),
                                                   ),
+                                                  // Icono de verificación o cancelación para mostrar si la opción es correcta o incorrecta
                                                   isLocked == true
                                                       ? questionOption.isCorrect
                                                           ? const Icon(
@@ -306,6 +322,7 @@ class _QuizScreenState extends State<QuizScreen> {
                               },
                             ),
                           ),
+                          // Botón para pasar a la siguiente pregunta o a los resultados
                           isLocked
                               ? buildElevatedButton()
                               : const SizedBox.shrink(),
@@ -322,6 +339,7 @@ class _QuizScreenState extends State<QuizScreen> {
     );
   }
 
+  // Restablece el estado de bloqueo de preguntas
   void _resetQuestionLocks() {
     for (var question in widget.questionlenght) {
       question.isLocked = false;
@@ -329,8 +347,8 @@ class _QuizScreenState extends State<QuizScreen> {
     questionTimerSeconds = 20;
   }
 
+  // Construye un botón elevado para pasar a la siguiente pregunta o a los resultados
   ElevatedButton buildElevatedButton() {
-    // const Color bgColor3 = Color(0xFF5170FD);
     const Color cardColor = Color(0xFF4993FA);
 
     return ElevatedButton(
@@ -365,13 +383,14 @@ class _QuizScreenState extends State<QuizScreen> {
         }
       },
       child: SizedBox(
-        // Wrap the button text in SizedBox
-        width: double.infinity, // Set width to match parent
+        // Envuelve el texto del botón en SizedBox
+        width: double
+            .infinity, // Establece el ancho para que coincida con el padre
         child: Text(
           _questionNumber < widget.questionlenght.length
               ? 'Siguiente pregunta'
               : 'Resultados',
-          textAlign: TextAlign.center, // Center text
+          textAlign: TextAlign.center, // Centra el texto
           style: Theme.of(context).textTheme.bodySmall!.copyWith(
                 color: Colors.white,
                 fontSize: 16,
